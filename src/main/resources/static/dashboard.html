@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiasMeter AI</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+        /* Additional styles for analytics button */
+        .analytics-btn {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .analytics-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+        
+        /* Compact chart for dashboard */
+        .compact-chart-container {
+            height: 200px;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .view-analytics-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .view-analytics-link a {
+            color: #3498db;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .view-analytics-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* User menu styles */
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 20px;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .user-details {
+            font-size: 14px;
+        }
+        
+        .user-email {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .user-role {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+        
+        .logout-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+        }
+        
+        .nav-links a i {
+            margin-right: 5px;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 12px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                margin-left: auto;
+            }
+            
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .user-info {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .logout-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-balance-scale-left"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>BiasMeter AI</h1>
+                        <p>Ethical AI Bias Detection Platform</p>
+                        <div class="summit-badge">
+                            <i class="fas fa-globe-americas"></i> Tech Trojans
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+           
+                
+                <!-- User Menu -->
+                <div class="user-menu">
+                    <div class="user-info" id="userInfo">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div class="user-details">
+                            <div class="user-email" id="userEmail">Loading...</div>
+                            <div class="user-role" id="userRole">User</div>
+                        </div>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2 class="section-title">
+                    <i class="fas fa-upload"></i> Upload CSV Data for Analysis
+                </h2>
+                
+                <!-- Industry Selection -->
+                <div class="industry-selector">
+                    <label><i class="fas fa-industry"></i> Select Industry for Analysis:</label>
+                    <div class="industry-grid" id="industryGrid">
+                        <div class="industry-card" data-industry="hiring">
+                            <div class="industry-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="industry-name">Hiring</div>
+                        </div>
+                        <div class="industry-card" data-industry="finance">
+                            <div class="industry-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="industry-name">Finance</div>
+                        </div>
+                        <div class="industry-card" data-industry="education">
+                            <div class="industry-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="industry-name">Education</div>
+                        </div>
+                        <div class="industry-card" data-industry="health">
+                            <div class="industry-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="industry-name">Health</div>
+                        </div>
+                        <div class="industry-card" data-industry="justice">
+                            <div class="industry-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="industry-name">Criminal Justice</div>
+                        </div>
+                        <div class="industry-card" data-industry="ecommerce">
+                            <div class="industry-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="industry-name">E-commerce</div>
+                        </div>
+                        <div class="industry-card" data-industry="social">
+                            <div class="industry-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="industry-name">Social Media</div>
+                        </div>
+                        <div class="industry-card" data-industry="industrial">
+                            <div class="industry-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="industry-name">Industrial</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedIndustry" value="hiring">
+                </div>
+                
+                <div class="file-upload-area" id="dropArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        <h3>Drag & Drop your CSV file</h3>
+                        <p>Format depends on selected industry</p>
+                        <p id="fileFormat">Hiring: Gender,Experience,Position,Selected</p>
+                        <button class="browse-btn" id="browseBtn">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                    </div>
+                    <input type="file" class="file-input" id="fileInput" accept=".csv">
+                </div>
+                
+                <div class="selected-file" id="selectedFile">
+                    <div class="file-icon">
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <div>
+                        <h4 id="fileName">No file selected</h4>
+                        <p id="fileSize">-</p>
+                        <small id="industryHint">Industry: Hiring</small>
+                    </div>
+                </div>
+                
+                <button class="analyze-btn" id="analyzeBtn">
+                    <i class="fas fa-search"></i> Analyze for Bias
+                </button>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <h3>Analyzing Data for Biases</h3>
+                    <p id="loadingText">Analyzing hiring data for gender bias...</p>
+                </div>
+            </section>
+            
+            <!-- Results Section -->
+            <section class="results-section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-bar"></i> Bias Analysis Results
+                </h2>
+                
+                <div class="results-placeholder" id="resultsPlaceholder">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analysis Results Will Appear Here</h3>
+                    <p>Select an industry, upload CSV file and click "Analyze for Bias" to see detailed bias metrics.</p>
+                </div>
+                
+                <div class="results-content" id="resultsContent">
+                    <div class="bias-score">
+                        <div class="score-circle" id="scoreCircle">
+                            <div class="score-value" id="scoreValue">0.0</div>
+                        </div>
+                        <h3 class="score-text" id="scoreText">No Data Analyzed</h3>
+                        <p id="scoreDescription">On a scale of 0 (no bias) to 100 (maximum bias)</p>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="biasChart"></canvas>
+                    </div>
+                    
+                    <div class="metrics-grid" id="metricsGrid">
+                        <!-- Metrics will be populated dynamically -->
+                    </div>
+                    
+                    <div class="recommendations" id="recommendations">
+                        <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                        <p>Upload and analyze data to see industry-specific recommendations.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Real-Time Monitoring Section -->
+        <section class="real-time-section">
+            <h2 class="section-title">
+                <i class="fas fa-bolt"></i> Real-Time Bias Monitoring
+            </h2>
+            
+            <div class="realtime-controls">
+                <button id="startRealtime" class="realtime-btn primary">
+                    <i class="fas fa-play"></i> Start Live Monitoring
+                </button>
+                <button id="stopRealtime" class="realtime-btn secondary" disabled>
+                    <i class="fas fa-stop"></i> Stop Monitoring
+                </button>
+                <button id="testAlert" class="realtime-btn warning" disabled>
+                    <i class="fas fa-bell"></i> Test Alert
+                </button>
+                
+                <a href="/analytics" class="analytics-btn">
+                    <i class="fas fa-chart-line"></i> View Analytics
+                </a>
+                
+                <div id="statusIndicator" class="status-indicator disconnected">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Not Connected</span>
+                </div>
+            </div>
+            
+            <div class="realtime-metrics">
+                <div class="realtime-metric-card bias">
+                    <div class="metric-label">Current Bias Score</div>
+                    <div class="metric-value" id="currentBias">0.0</div>
+                    <div class="metric-sub" id="biasTrend">→ Stable</div>
+                </div>
+                
+                <div class="realtime-metric-card male">
+                    <div class="metric-label">Male Selection Rate</div>
+                    <div class="metric-value" id="maleRate">0%</div>
+                    <div class="metric-sub">Real-time monitoring</div>
+                </div>
+                
+                <div class="realtime-metric-card female">
+                    <div class="metric-label">Female Selection Rate</div>
+                    <div class="metric-value" id="femaleRate">0%</div>
+                    <div class="metric-sub">Real-time monitoring</div>
+                </div>
+                
+                <div class="realtime-metric-card alerts">
+                    <div class="metric-label">Active Alerts</div>
+                    <div class="metric-value" id="alertCount">0</div>
+                    <div class="metric-sub">Last 24 hours</div>
+                </div>
+            </div>
+            
+            <div class="realtime-charts-container">
+                <div class="live-chart-container">
+                    <h4><i class="fas fa-chart-line"></i> Live Bias Trend</h4>
+                    
+                    <!-- Compact View -->
+                    <div class="trend-compact-view">
+                        <div class="metric-label">Current Fairness Score</div>
+                        <div class="trend-value-large" id="trendValue">100%</div>
+                        <div class="metric-sub">100% = No bias detected</div>
+                        <button class="view-trend-details" id="viewTrendDetails">
+                            <i class="fas fa-chart-bar"></i> View Trend Details
+                        </button>
+                    </div>
+                    
+                    <!-- Detailed Panel -->
+                    <div class="trend-details-panel" id="trendDetailsPanel">
+                        <h5><i class="fas fa-chart-line"></i> Detailed Bias Trend Analysis</h5>
+                        <p>The trend shows how bias changes over time during monitoring.</p>
+                        
+                        <div class="trend-bar-container">
+                            <div class="trend-bar-fill" id="trendBarFill" style="width: 100%"></div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                            <span>0% (High Bias)</span>
+                            <span>50% (Moderate)</span>
+                            <span>100% (No Bias)</span>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <p><strong>Interpretation:</strong></p>
+                            <ul style="padding-left: 20px; margin-top: 10px;">
+                                <li><span style="color: #2ecc71;">90-100%</span>: Minimal to no bias detected</li>
+                                <li><span style="color: #f39c12;">70-89%</span>: Moderate bias, requires monitoring</li>
+                                <li><span style="color: #e74c3c;">0-69%</span>: Significant bias, immediate action needed</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="close-trend-details" id="closeTrendDetails">
+                            <i class="fas fa-times"></i> Close Details
+                        </button>
+                        <div style="clear: both;"></div>
+                    </div>
+                    
+                    <!-- Compact Chart -->
+                    <div class="compact-chart-container">
+                        <canvas id="liveBiasChart" height="180"></canvas>
+                    </div>
+                    
+                    <div class="view-analytics-link">
+                        <a href="analytics.html" class="nav-button">
+                <i class="fas fa-chart-line"></i>
+                <span>View Full Dashboard Analytics</span>
+            </a>
+                    </div>
+                </div>
+                
+                <!-- Alert Panel -->
+                <div class="alert-panel">
+                    <h4><i class="fas fa-bell"></i> Live Alerts</h4>
+                    <div class="alert-list" id="alertList">
+                        <div class="alert-item low">
+                            <div class="alert-title">
+                                <i class="fas fa-info-circle"></i>
+                                System Started
+                            </div>
+                            <div class="alert-message">Real-time monitoring initialized</div>
+                            <div class="alert-time" id="systemTime"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="realtime-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>Real-Time Monitoring:</strong> This feature simulates live data from AI systems in production. 
+                It detects bias spikes as they happen and alerts administrators immediately. 
+                <a href="/analytics" style="color: #3498db; text-decoration: none; font-weight: 600;">
+                    <i class="fas fa-chart-line"></i> View detailed analytics →
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About BiasMeter AI</h3>
+                    <p>BiasMeter AI is an ethical AI bias detection platform developed for New Innovation. Our mission is to help identify and mitigate biases in AI models across 8 key industries.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>How It Works</h3>
+                    <p>Select an industry, upload your CSV data. Our system analyzes selection rates across different groups and calculates industry-specific bias metrics. New: Real-time monitoring for continuous bias detection.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Developed For</h3>
+                    <p>New Innovation</p>
+                    <p>Start Up Odisha Initiative</p>
+                    <p>Problem Statement: Open Innovation (AI Solutions)</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; BiasMeter AI | Spring Boot Application with Real-Time Monitoring</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="/js/app.js"></script>
+    <script src="/js/realtime.js"></script>
+    
+    <!-- Mobile menu toggle script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('show');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.nav-links') && 
+                        !event.target.closest('.mobile-menu-btn')) {
+                        navLinks.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

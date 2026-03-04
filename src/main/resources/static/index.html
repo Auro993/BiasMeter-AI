@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiasMeter AI | Welcome</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .logo-text h2 {
+            font-size: 22px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+        
+        .nav-links .login-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 50px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+                       radial-gradient(circle at 80% 20%, rgba(155, 89, 182, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3498db, #9b59b6, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #a0a0ff;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .explore-btn {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .explore-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.4);
+        }
+        
+        .demo-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 18px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        /* Quick Access Section */
+        .quick-access-section {
+            padding: 100px 50px;
+            background: rgba(20, 25, 50, 0.8);
+            text-align: center;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .nav-button {
+            background: rgba(52, 152, 219, 0.1);
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            border-radius: 15px;
+            padding: 25px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-button:hover {
+            background: rgba(52, 152, 219, 0.3);
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-button i {
+            font-size: 36px;
+            color: #3498db;
+        }
+        
+        .nav-button span {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Platform Navigation Section */
+        .platform-nav-section {
+            padding: 100px 50px;
+            background: rgba(10, 15, 35, 0.8);
+        }
+        
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .platform-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-10px);
+            border-color: #3498db;
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 30px;
+        }
+        
+        .platform-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .platform-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .platform-btn {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .platform-btn:hover {
+            background: rgba(52, 152, 219, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 100px 50px;
+            background: rgba(15, 20, 45, 0.9);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.2);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2ecc71;
+        }
+        
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        /* Dashboard Features Section */
+        .dashboard-features {
+            padding: 80px 50px;
+            background: rgba(25, 30, 55, 0.9);
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .dashboard-feature {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-feature:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: #3498db;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+        
+        .dashboard-feature i {
+            font-size: 32px;
+            color: #9b59b6;
+            margin-bottom: 15px;
+        }
+        
+        .dashboard-feature h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .dashboard-feature p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 100px 50px;
+            background: rgba(10, 15, 35, 0.8);
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        /* Industries Section */
+        .industries-section {
+            padding: 100px 50px;
+            background: rgba(15, 20, 45, 0.9);
+        }
+        
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .industry-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .industry-item:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .industry-item i {
+            font-size: 32px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .industry-item h4 {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 50px;
+            background: rgba(20, 25, 50, 0.8);
+            text-align: center;
+        }
+        
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-item h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 50px;
+            background: rgba(15, 20, 45, 0.9);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        /* Login Modal - FIXED SCROLLABLE */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .login-container {
+            width: 95%;
+            max-width: 1000px;
+            background: rgba(20, 25, 50, 0.95);
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            min-height: 600px;
+            max-height: 90vh;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            margin: 40px auto;
+        }
+        
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, #1a237e, #0d47a1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 350px;
+        }
+        
+        .login-right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 100%;
+        }
+        
+        /* Force scroll on mobile */
+        @media (max-width: 768px) {
+            .login-modal {
+                padding: 10px;
+                align-items: flex-start;
+                overflow-y: scroll !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            
+            .login-container {
+                flex-direction: column;
+                max-height: 90vh !important;
+                margin: 20px auto;
+                overflow-y: auto !important;
+            }
+            
+            .login-left, .login-right {
+                min-width: 100%;
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            .login-right {
+                flex: 1;
+                min-height: 500px;
+                overflow-y: auto !important;
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2001;
+        }
+        
+        /* Auth Tabs */
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .auth-tab.active {
+            color: #3498db;
+        }
+        
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #3498db;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        /* Form Styles */
+        .auth-form {
+            display: none;
+            flex: 1;
+        }
+        
+        .auth-form.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .form-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .input-with-icon input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .input-with-icon input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .auth-btn.secondary {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        /* Demo Credentials */
+        .demo-credentials {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .demo-credentials h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .credential-item {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Message */
+        .message {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .message.success {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .login-container {
+                flex-direction: column;
+                width: 95%;
+                max-height: 90vh;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-buttons-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-container {
+                max-height: 95vh;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 50px;
+            background: rgba(10, 15, 35, 1);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* Form Options */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .remember-me label {
+            margin: 0;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .forgot-password {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .forgot-password:hover {
+            color: #5dade2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <div class="logo-icon">
+                <i class="fas fa-balance-scale-left"></i>
+            </div>
+            <div class="logo-text">
+                <h2>BiasMeter AI</h2>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#platform">Platform</a>
+            <a href="#features">Features</a>
+            <a href="#industries">Industries</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <button class="login-btn" id="navLoginBtn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        
+        <!-- Floating elements -->
+        <div class="floating-element" style="width: 100px; height: 100px; top: 20%; left: 10%;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; right: 10%;"></div>
+        
+        <div class="hero-content animate__animated animate__fadeInUp">
+            <h1>Detect & Mitigate AI Bias</h1>
+            <p class="hero-subtitle">
+                BiasMeter AI is an ethical AI bias detection platform that helps identify and 
+                mitigate biases across 8+ key industries. Ensure fairness in your AI systems.
+            </p>
+            
+            <div class="cta-buttons">
+                <button class="explore-btn" id="exploreBtn">
+                    <i class="fas fa-rocket"></i> Explore Platform
+                </button>
+                <button class="demo-btn" id="demoBtn">
+                    <i class="fas fa-play-circle"></i> Watch Demo
+                </button>
+            </div>
+            
+            <div class="stats-grid" style="max-width: 800px; margin-top: 60px;">
+                <div class="stat-item">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Industries Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Real-time Monitoring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access-section" id="quickaccess">
+        <h2 class="section-title">Quick Access</h2>
+        <div class="nav-buttons-grid">
+            <a href="dashboard.html" class="nav-button">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="analytics.html" class="nav-button">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="learn.html" class="nav-button">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Learn</span>
+            </a>
+            <a href="compliance.html" class="nav-button">
+                <i class="fas fa-file-contract"></i>
+                <span>Compliance</span>
+            </a>
+            <a href="developers.html" class="nav-button">
+                <i class="fas fa-code"></i>
+                <span>Developers</span>
+            </a>
+            <a href="reports.html" class="nav-button">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+            <a href="faq.html" class="nav-button">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Platform Navigation Section -->
+    <section class="platform-nav-section" id="platform">
+        <h2 class="section-title">Platform Navigation</h2>
+        <div class="platform-grid">
+            <div class="platform-card">
+                <div class="platform-icon">
+                    <i class="fas fa-upload"></i>
+                </div>
+                <h3>CSV Upload & Analysis</h3>
+                <p>Upload your CSV files and get instant bias analysis across different demographics and parameters.</p>
+                <a href="dashboard.html" class="platform-btn">Try Analysis</a>
+            </div>
+            
+            <div class="platform-card">
+                <div class="platform-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Real-time Monitoring</h3>
+                <p>Monitor AI systems in production with live bias detection and instant alert systems.</p>
+                <a href="dashboard.html" class="platform-btn">Start Monitoring</a>
+            </div>
+            
+            <div class="platform-card">
+                <div class="platform-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <h3>Industry Templates</h3>
+                <p>Pre-configured templates for 8+ industries including hiring, finance, education, and healthcare.</p>
+                <a href="#industries" class="platform-btn">View Industries</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Comprehensive Bias Analysis</h3>
+                <p>Deep dive into your AI models with advanced bias detection algorithms across multiple parameters including gender, age, ethnicity, and socioeconomic factors. Get detailed reports with actionable insights.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Real-time Monitoring & Alerts</h3>
+                <p>Continuous monitoring of AI systems in production with instant alerts for bias spikes. Set custom thresholds and receive notifications when bias exceeds acceptable levels.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Features Section -->
+    <section class="dashboard-features">
+        <h2 class="section-title">Dashboard Features</h2>
+        <div class="dashboard-grid">
+            <div class="dashboard-feature">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Interactive Charts</h4>
+                <p>Visualize bias metrics with interactive charts and graphs</p>
+            </div>
+            
+            <div class="dashboard-feature">
+                <i class="fas fa-file-export"></i>
+                <h4>Report Generation</h4>
+                <p>Generate detailed PDF reports for compliance and audits</p>
+            </div>
+            
+            <div class="dashboard-feature">
+                <i class="fas fa-bell"></i>
+                <h4>Alert System</h4>
+                <p>Real-time notifications for bias threshold breaches</p>
+            </div>
+            
+            <div class="dashboard-feature">
+                <i class="fas fa-database"></i>
+                <h4>Data Management</h4>
+                <p>Store and manage multiple datasets with version control</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2 class="section-title">About BiasMeter AI</h2>
+        <div class="about-content">
+            <p>BiasMeter AI is an ethical AI bias detection platform developed for New Innovation and the Start Up Odisha Initiative. Our mission is to help organizations identify and mitigate biases in their AI systems across various industries.</p>
+            
+            <p>With the increasing adoption of AI in decision-making processes, it's crucial to ensure these systems are fair, transparent, and unbiased. BiasMeter AI provides comprehensive tools to analyze, monitor, and improve the fairness of AI algorithms.</p>
+            
+            <p>Our platform is designed to be accessible to both technical and non-technical users, providing clear insights and actionable recommendations to reduce bias and promote ethical AI practices.</p>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries-section" id="industries">
+        <h2 class="section-title">Industries We Cover</h2>
+        <div class="industries-grid">
+            <div class="industry-item">
+                <i class="fas fa-briefcase"></i>
+                <h4>Hiring & Recruitment</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-money-bill-wave"></i>
+                <h4>Finance & Banking</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>Education</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-heartbeat"></i>
+                <h4>Healthcare</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-gavel"></i>
+                <h4>Criminal Justice</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-shopping-cart"></i>
+                <h4>E-commerce</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-users"></i>
+                <h4>Social Media</h4>
+            </div>
+            
+            <div class="industry-item">
+                <i class="fas fa-industry"></i>
+                <h4>Industrial</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>For Support & Technical Issues</h3>
+                <p>Email: support@biasmeter.ai</p>
+                <p>Response Time: Within 24 hours</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>For Business Inquiries</h3>
+                <p>Email: business@biasmeter.ai</p>
+                <p>Let's discuss how BiasMeter AI can help your organization</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>Development Team</h3>
+                <p>Developed for: New Innovation - Start Up Odisha Initiative</p>
+                <p>Problem Statement: Open Innovation (AI Solutions)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Models Analyzed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Bias Reduction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Enterprise Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0.1s</div>
+                <div class="stat-label">Analysis Time</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="login-container">
+            <!-- Left Side - Platform Info -->
+            <div class="login-left">
+                <div class="logo-large" style="margin-bottom: 40px; text-align: center;">
+                    <div class="logo-icon-large" style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px; color: white;">
+                        <i class="fas fa-balance-scale-left"></i>
+                    </div>
+                    <div class="logo-text-large">
+                        <h1 style="font-size: 36px; color: white;">BiasMeter AI</h1>
+                        <p style="color: rgba(255, 255, 255, 0.8);">Ethical AI Bias Detection</p>
+                    </div>
+                </div>
+                
+                <div class="features-list">
+                    <h3 style="margin-bottom: 30px; font-size: 24px; color: white;">What you'll get access to:</h3>
+                    
+                    <div class="feature-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <i class="fas fa-upload" style="color: #3498db;"></i>
+                        <span style="color: white;">Upload & Analyze CSV Data</span>
+                    </div>
+                    
+                    <div class="feature-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <i class="fas fa-chart-bar" style="color: #3498db;"></i>
+                        <span style="color: white;">Real-time Bias Monitoring</span>
+                    </div>
+                    
+                    <div class="feature-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <i class="fas fa-industry" style="color: #3498db;"></i>
+                        <span style="color: white;">8+ Industry Templates</span>
+                    </div>
+                    
+                    <div class="feature-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <i class="fas fa-file-pdf" style="color: #3498db;"></i>
+                        <span style="color: white;">Detailed Reports & Analytics</span>
+                    </div>
+                </div>
+                
+                <div class="demo-credentials">
+                    <h3><i class="fas fa-key"></i> Demo Credentials</h3>
+                    <div class="credential-item">
+                        <strong>Regular User:</strong> demo@biasmeter.ai / demo123
+                    </div>
+                    <div class="credential-item">
+                        <strong>Administrator:</strong> admin@biasmeter.ai / admin123
+                    </div>
+                    <div class="credential-item">
+                        <strong>Your Account:</strong> autosmitasahoo4@gmail.com / smita123
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Login/Register Forms -->
+            <div class="login-right">
+                <!-- Auth Tabs -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Sign In</button>
+                    <button class="auth-tab" data-tab="register">Create Account</button>
+                </div>
+                
+                <!-- Message Container -->
+                <div class="message" id="message"></div>
+                
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form active">
+                    <h2 class="form-title">Welcome Back</h2>
+                    <p class="form-subtitle">Sign in to your BiasMeter AI account</p>
+                    
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="loginEmail" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="loginPassword" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberMe">
+                                <label for="rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password" id="forgotPassword">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Register Form -->
+                <div id="registerForm" class="auth-form">
+                    <h2 class="form-title">Create Account</h2>
+                    <p class="form-subtitle">Join BiasMeter AI platform</p>
+                    
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="registerName" placeholder="John Doe" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="registerEmail" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerCompany">Company (Optional)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-building"></i>
+                                <input type="text" id="registerCompany" placeholder="Your Company">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="registerPassword" placeholder="At least 6 characters" required minlength="6">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn secondary">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#platform">Platform</a>
+            <a href="#features">Features</a>
+            <a href="#industries">Industries</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 BiasMeter AI. Developed for New Innovation - Start Up Odisha Initiative.</p>
+            <p>Problem Statement: Open Innovation (AI Solutions) | Tech Trojans Team</p>
+        </div>
+    </footer>
+
+    <script>
+        // Current user state
+        let currentUser = null;
+        let authToken = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 BiasMeter AI loaded');
+            
+            // Initialize from localStorage
+            initAuth();
+            
+            // Setup login modal
+            setupLoginModal();
+            
+            // Setup form handlers
+            setupAuthFormHandlers();
+            
+            // Setup smooth scrolling
+            setupSmoothScrolling();
+            
+            // Setup animations
+            setupAnimations();
+            
+            // Setup demo button
+            setupDemoButton();
+        });
+
+        function initAuth() {
+            console.log('🔐 Initializing authentication...');
+            
+            const savedUser = localStorage.getItem('biasmeter_user');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    console.log('✅ User restored:', currentUser.email);
+                } catch (e) {
+                    console.error('Error parsing saved user:', e);
+                    clearAuthData();
+                }
+            }
+            
+            // Auto-fill login if remember me
+            const savedEmail = localStorage.getItem('biasmeter_user_email');
+            const rememberMe = localStorage.getItem('biasmeter_remember_me');
+            
+            if (rememberMe === 'true' && savedEmail) {
+                document.getElementById('loginEmail').value = savedEmail;
+                document.getElementById('rememberMe').checked = true;
+            }
+        }
+
+        function setupLoginModal() {
+            const loginModal = document.getElementById('loginModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const navLoginBtn = document.getElementById('navLoginBtn');
+            const exploreBtn = document.getElementById('exploreBtn');
+            const authTabs = document.querySelectorAll('.auth-tab');
+            
+            // Show modal function
+            function showLoginModal() {
+                if (loginModal) {
+                    loginModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Ensure modal is scrollable
+                    setTimeout(() => {
+                        loginModal.style.overflowY = 'auto';
+                        const loginRight = document.querySelector('.login-right');
+                        if (loginRight) {
+                            loginRight.style.overflowY = 'auto';
+                        }
+                    }, 10);
+                }
+            }
+            
+            // Close modal function
+            function closeLoginModal() {
+                if (loginModal) {
+                    loginModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    
+                    // Clear any messages
+                    clearMessage();
+                    
+                    // Reset forms (but keep auto-filled values)
+                    const loginForm = document.getElementById('loginFormElement');
+                    const registerForm = document.getElementById('registerFormElement');
+                    
+                    // Only reset if there are validation errors
+                    if (loginForm.querySelector('.is-invalid')) {
+                        loginForm.reset();
+                    }
+                    if (registerForm.querySelector('.is-invalid')) {
+                        registerForm.reset();
+                    }
+                }
+            }
+            
+            // Event listeners
+            if (navLoginBtn) navLoginBtn.addEventListener('click', showLoginModal);
+            if (exploreBtn) exploreBtn.addEventListener('click', showLoginModal);
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeLoginModal);
+            
+            // Close when clicking outside modal
+            if (loginModal) {
+                loginModal.addEventListener('click', function(e) {
+                    if (e.target === loginModal) {
+                        closeLoginModal();
+                    }
+                });
+            }
+            
+            // Tab switching
+            if (authTabs) {
+                authTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const tabId = this.dataset.tab;
+                        
+                        // Update active tab
+                        authTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Show corresponding form
+                        document.getElementById('loginForm').classList.remove('active');
+                        document.getElementById('registerForm').classList.remove('active');
+                        
+                        if (tabId === 'login') {
+                            document.getElementById('loginForm').classList.add('active');
+                        } else {
+                            document.getElementById('registerForm').classList.add('active');
+                        }
+                        
+                        // Clear any messages
+                        clearMessage();
+                    });
+                });
+            }
+            
+            // Mobile-friendly scrolling fix
+            const loginRight = document.querySelector('.login-right');
+            if (loginRight) {
+                loginRight.addEventListener('touchstart', function() {
+                    this.style.overflowY = 'auto';
+                });
+            }
+        }
+
+        function setupAuthFormHandlers() {
+            const loginForm = document.getElementById('loginFormElement');
+            const registerForm = document.getElementById('registerFormElement');
+            
+            // Login form submission
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const password = document.getElementById('loginPassword').value;
+                    const rememberMe = document.getElementById('rememberMe').checked;
+                    
+                    // Validate
+                    if (!email || !password) {
+                        showMessage('Please fill in all fields', 'error');
+                        return;
+                    }
+                    
+                    if (!validateEmail(email)) {
+                        showMessage('Please enter a valid email address', 'error');
+                        return;
+                    }
+                    
+                    // Show loading
+                    const submitBtn = loginForm.querySelector('.auth-btn');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+                    submitBtn.disabled = true;
+                    
+                    // Attempt login
+                    const result = await login(email, password, rememberMe);
+                    
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // If login failed, show error
+                    if (!result.success) {
+                        showMessage(result.message || 'Login failed. Please try again.', 'error');
+                    }
+                });
+            }
+            
+            // Register form submission
+            if (registerForm) {
+                registerForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const name = document.getElementById('registerName').value.trim();
+                    const email = document.getElementById('registerEmail').value.trim();
+                    const company = document.getElementById('registerCompany').value.trim();
+                    const password = document.getElementById('registerPassword').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    
+                    // Validation
+                    if (!name || !email || !password || !confirmPassword) {
+                        showMessage('Please fill in all required fields', 'error');
+                        return;
+                    }
+                    
+                    if (!validateEmail(email)) {
+                        showMessage('Please enter a valid email address', 'error');
+                        return;
+                    }
+                    
+                    if (password.length < 6) {
+                        showMessage('Password must be at least 6 characters', 'error');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        showMessage('Passwords do not match', 'error');
+                        return;
+                    }
+                    
+                    // Show loading
+                    const submitBtn = registerForm.querySelector('.auth-btn');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+                    submitBtn.disabled = true;
+                    
+                    // Attempt registration
+                    const result = await register(name, email, company, password);
+                    
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Show result
+                    if (result.success) {
+                        showMessage(result.message, 'success');
+                    } else {
+                        showMessage(result.message, 'error');
+                    }
+                });
+            }
+            
+            // Auto-fill demo credentials
+            const loginEmail = document.getElementById('loginEmail');
+            const loginPassword = document.getElementById('loginPassword');
+            
+            if (loginEmail) {
+                // Double click to fill demo
+                loginEmail.addEventListener('dblclick', function() {
+                    this.value = 'demo@biasmeter.ai';
+                });
+                
+                // Single click to fill user's email
+                loginEmail.addEventListener('click', function() {
+                    if (this.value === '' && currentUser?.email) {
+                        this.value = currentUser.email;
+                    }
+                });
+            }
+            
+            if (loginPassword) {
+                loginPassword.addEventListener('dblclick', function() {
+                    this.value = 'demo123';
+                });
+            }
+            
+            // Forgot password
+            const forgotPasswordBtn = document.getElementById('forgotPassword');
+            if (forgotPasswordBtn) {
+                forgotPasswordBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const email = prompt('Enter your email to reset password:', '');
+                    if (email && validateEmail(email)) {
+                        showMessage(`Password reset instructions sent to ${email}. Check your email.`, 'success');
+                    }
+                });
+            }
+        }
+
+        async function login(email, password, rememberMe = false) {
+            console.log('🔐 Attempting login for:', email);
+            
+            // Demo login logic
+            const demoUsers = {
+                'demo@biasmeter.ai': { 
+                    name: 'Demo User', 
+                    role: 'user',
+                    company: 'Demo Corp',
+                    email: 'demo@biasmeter.ai'
+                },
+                'admin@biasmeter.ai': { 
+                    name: 'Admin User', 
+                    role: 'admin',
+                    company: 'Admin Corp',
+                    email: 'admin@biasmeter.ai'
+                },
+                'autosmitasahoo4@gmail.com': { 
+                    name: 'Auto Smita Sahoo', 
+                    role: 'user',
+                    company: 'Student',
+                    email: 'autosmitasahoo4@gmail.com'
+                }
+            };
+            
+            // Check if it's a demo user
+            if (demoUsers[email] && password === 'demo123') {
+                currentUser = demoUsers[email];
+                
+                // Store user data
+                localStorage.setItem('biasmeter_user', JSON.stringify(currentUser));
+                
+                if (rememberMe) {
+                    localStorage.setItem('biasmeter_user_email', email);
+                    localStorage.setItem('biasmeter_remember_me', 'true');
+                } else {
+                    localStorage.removeItem('biasmeter_user_email');
+                    localStorage.removeItem('biasmeter_remember_me');
+                }
+                
+                showMessage('Login successful! Redirecting...', 'success');
+                
+                // Close modal and redirect after delay
+                setTimeout(() => {
+                    document.getElementById('loginModal').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+                
+                return { success: true, message: 'Login successful' };
+            }
+            
+            // Check for any other user (demo registration)
+            if (password.length >= 6) {
+                currentUser = {
+                    name: email.split('@')[0] || 'New User',
+                    role: 'user',
+                    company: 'User Company',
+                    email: email
+                };
+                
+                // Store user data
+                localStorage.setItem('biasmeter_user', JSON.stringify(currentUser));
+                
+                if (rememberMe) {
+                    localStorage.setItem('biasmeter_user_email', email);
+                    localStorage.setItem('biasmeter_remember_me', 'true');
+                }
+                
+                showMessage('Login successful! Redirecting...', 'success');
+                
+                // Close modal and redirect after delay
+                setTimeout(() => {
+                    document.getElementById('loginModal').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+                
+                return { success: true, message: 'Login successful' };
+            }
+            
+            return { 
+                success: false, 
+                message: 'Invalid credentials. Try demo@biasmeter.ai / demo123' 
+            };
+        }
+
+        async function register(name, email, company, password) {
+            console.log('📝 Attempting registration for:', email);
+            
+            // Check if email already exists
+            const existingUser = localStorage.getItem(`biasmeter_user_${email}`);
+            if (existingUser) {
+                return { 
+                    success: false, 
+                    message: 'Email already registered. Please login instead.' 
+                };
+            }
+            
+            // Create new user
+            currentUser = {
+                name: name,
+                email: email,
+                company: company || '',
+                role: 'user',
+                createdAt: new Date().toISOString()
+            };
+            
+            // Store user data
+            localStorage.setItem('biasmeter_user', JSON.stringify(currentUser));
+            localStorage.setItem(`biasmeter_user_${email}`, JSON.stringify(currentUser));
+            
+            // Auto-fill login form
+            document.getElementById('loginEmail').value = email;
+            document.getElementById('loginPassword').value = password;
+            
+            showMessage('Account created successfully! Auto-filling login...', 'success');
+            
+            // Switch to login tab after delay
+            setTimeout(() => {
+                switchToLoginTab();
+            }, 2000);
+            
+            return { 
+                success: true, 
+                message: 'Registration successful! You can now login.' 
+            };
+        }
+
+        function switchToLoginTab() {
+            // Switch tabs
+            document.querySelectorAll('.auth-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector('[data-tab="login"]').classList.add('active');
+            
+            // Switch forms
+            document.getElementById('loginForm').classList.add('active');
+            document.getElementById('registerForm').classList.remove('active');
+            
+            // Clear register form
+            document.getElementById('registerFormElement').reset();
+            
+            // Clear message
+            clearMessage();
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            if (messageDiv) {
+                messageDiv.textContent = text;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                // Auto-hide success messages
+                if (type === 'success') {
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 5000);
+                }
+            }
+        }
+
+        function clearMessage() {
+            const messageDiv = document.getElementById('message');
+            if (messageDiv) {
+                messageDiv.style.display = 'none';
+                messageDiv.textContent = '';
+                messageDiv.className = 'message';
+            }
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function clearAuthData() {
+            localStorage.removeItem('biasmeter_user');
+            localStorage.removeItem('biasmeter_user_email');
+            localStorage.removeItem('biasmeter_remember_me');
+            currentUser = null;
+        }
+
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        function setupAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Apply animation to quick access buttons
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.style.opacity = '0';
+                button.style.transform = 'translateY(20px)';
+                button.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(button);
+            });
+            
+            // Apply animation to platform cards
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Apply animation to feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Apply animation to dashboard features
+            document.querySelectorAll('.dashboard-feature').forEach(feature => {
+                feature.style.opacity = '0';
+                feature.style.transform = 'translateY(20px)';
+                feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(feature);
+            });
+            
+            // Apply animation to industry items
+            document.querySelectorAll('.industry-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        }
+
+        function setupDemoButton() {
+            const demoBtn = document.getElementById('demoBtn');
+            if (demoBtn) {
+                demoBtn.addEventListener('click', function() {
+                    // Show a demo alert or modal
+                    alert('Demo video would play here. This is a prototype.\n\nFor full functionality:\n1. Click "Explore Platform"\n2. Use demo credentials:\n   Email: demo@biasmeter.ai\n   Password: demo123\n3. Try the CSV upload and analysis');
+                });
+            }
+        }
+
+        // Global functions for debugging
+        window.biasmeter = {
+            login,
+            register,
+            logout: clearAuthData,
+            getCurrentUser: () => currentUser,
+            showMessage,
+            clearMessage
+        };
+
+        console.log('🎉 BiasMeter AI v3.0.0 ready!');
+    </script>
+</body>
+</html>

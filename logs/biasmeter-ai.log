@@ -1,0 +1,158 @@
+2026-02-21 00:14:22 [restartedMain] INFO  c.e.biasmeter.BiasMeterAlApplication - Starting BiasMeterAlApplication using Java 21.0.8 on LAPTOP-PD08RV3N with PID 4748 (D:\BiasMeterAI\target\classes started by sahoo in D:\BiasMeterAI)
+2026-02-21 00:14:22 [restartedMain] DEBUG c.e.biasmeter.BiasMeterAlApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2026-02-21 00:14:22 [restartedMain] INFO  c.e.biasmeter.BiasMeterAlApplication - The following 1 profile is active: "dev"
+2026-02-21 00:14:22 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-02-21 00:14:22 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-02-21 00:14:23 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-21 00:14:23 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
+2026-02-21 00:14:24 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-02-21 00:14:24 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 00:14:24 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2026-02-21 00:14:24 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 00:14:24 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2575 ms
+2026-02-21 00:14:25 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 00:14:25 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 00:14:25 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:biasmeterdb'
+2026-02-21 00:14:25 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 00:14:25 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2026-02-21 00:14:25 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2026-02-21 00:14:26 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2026-02-21 00:14:26 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-02-21 00:14:26 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-21 00:14:26 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 00:14:27 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2026-02-21 00:14:27 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 21 mappings in 'requestMappingHandlerMapping'
+2026-02-21 00:14:27 [restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/, /dashboard, /analytics, /learn, /compliance, /developers, /reports, /faq, /login, /upload, /monitoring] in 'viewControllerHandlerMapping'
+2026-02-21 00:14:27 [restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-02-21 00:14:27 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-02-21 00:14:27 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2b36dfc6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@528bf79a, org.springframework.security.web.context.SecurityContextPersistenceFilter@368e1418, org.springframework.security.web.header.HeaderWriterFilter@1c3b9fe, org.springframework.web.filter.CorsFilter@7a0329aa, org.springframework.security.web.authentication.logout.LogoutFilter@79536d5c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@65e4afa2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7f6129f0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63628312, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@47f055a6, org.springframework.security.web.session.SessionManagementFilter@367a0dc3, org.springframework.security.web.access.ExceptionTranslationFilter@27a13660, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18bd70e2]
+2026-02-21 00:14:27 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-02-21 00:14:27 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-02-21 00:14:27 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-02-21 00:14:27 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2026-02-21 00:14:27 [restartedMain] INFO  c.e.biasmeter.BiasMeterAlApplication - Started BiasMeterAlApplication in 6.402 seconds (JVM running for 8.861)
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@37bf0560
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@591a7bdc
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-02-21 00:14:28 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-21 00:16:17 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/dashboard.html", parameters={}
+2026-02-21 00:16:17 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:16:17 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/css/style.css", parameters={}
+2026-02-21 00:16:17 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/js/app.js", parameters={}
+2026-02-21 00:16:17 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/js/realtime.js", parameters={}
+2026-02-21 00:16:17 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:17 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:16:17 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:16:17 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:16:18 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.TestController#test()
+2026-02-21 00:16:18 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/test", parameters={}
+2026-02-21 00:16:18 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.TestController#test()
+2026-02-21 00:16:18 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-02-21 00:16:18 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{message=BiasMeter AI Server is running, version=1.0.0, status=OK, timestamp=1771613178283}]
+2026-02-21 00:16:18 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:16:18 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login.html", parameters={}
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.CustomErrorController#handleError(HttpServletRequest)
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{path=/error, error=, status=404, timestamp=1771613178776}]
+2026-02-21 00:16:18 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+2026-02-21 00:16:54 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.HomeController#home(HttpSession)
+2026-02-21 00:16:54 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/?industry=education", parameters={masked}
+2026-02-21 00:16:54 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.HomeController#home(HttpSession)
+2026-02-21 00:16:54 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.view.RedirectView - View name 'redirect:', model {}
+2026-02-21 00:16:54 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login.html", parameters={}
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.CustomErrorController#handleError(HttpServletRequest)
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{path=/error, error=, status=404, timestamp=1771613214188}]
+2026-02-21 00:16:54 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+2026-02-21 00:17:22 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:22 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/index.html", parameters={}
+2026-02-21 00:17:22 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:22 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:17:40 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/dashboard.html", parameters={}
+2026-02-21 00:17:40 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:17:40 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/css/style.css", parameters={}
+2026-02-21 00:17:40 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:17:40 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/js/app.js", parameters={}
+2026-02-21 00:17:40 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/js/realtime.js", parameters={}
+2026-02-21 00:17:40 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:17:40 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:17:40 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:17:40 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.TestController#test()
+2026-02-21 00:17:40 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/test", parameters={}
+2026-02-21 00:17:40 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.TestController#test()
+2026-02-21 00:17:40 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-02-21 00:17:40 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{message=BiasMeter AI Server is running, version=1.0.0, status=OK, timestamp=1771613260647}]
+2026-02-21 00:17:40 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:18:12 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:12 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/learn.html", parameters={}
+2026-02-21 00:18:12 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:12 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:18:21 [http-nio-8080-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:21 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/compliance.html", parameters={}
+2026-02-21 00:18:21 [http-nio-8080-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:21 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:18:25 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:25 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/developers.html", parameters={}
+2026-02-21 00:18:25 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:25 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:18:31 [http-nio-8080-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:31 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/reports.html", parameters={}
+2026-02-21 00:18:31 [http-nio-8080-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:31 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:18:35 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:35 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/faq.html", parameters={}
+2026-02-21 00:18:35 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:35 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:18:52 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:52 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/learn.html", parameters={}
+2026-02-21 00:18:52 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:18:52 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-02-21 00:19:07 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.AnalyticsController#compliancePage()
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login.html", parameters={}
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [static/], classpath [public/]]
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.example.biasmeter.controller.CustomErrorController#handleError(HttpServletRequest)
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{path=/error, error=, status=404, timestamp=1771613347326}]
+2026-02-21 00:19:07 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-21 00:20:10 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

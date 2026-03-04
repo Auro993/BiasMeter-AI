@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Support | BiasMeter AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #f39c12, #d35400);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #2c3e50, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 18px 25px;
+            padding-right: 60px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: #2980b9;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .faq-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 5px solid #f39c12;
+        }
+        
+        .faq-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .faq-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .faq-question {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .faq-icon {
+            color: #f39c12;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            color: #5d6d7e;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-card.active .faq-answer {
+            max-height: 500px;
+            margin-top: 15px;
+        }
+        
+        .faq-card.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .category-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .category-tag {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .category-tag.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .category-tag:hover:not(.active) {
+            background: #f0f7ff;
+            border-color: #3498db;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+        
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-title {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.prev {
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .nav-btn.home {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div>
+                    <h1>FAQ & Support</h1>
+                    <p class="subtitle">Find Answers & Get Help with BiasMeter AI</p>
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search for answers..." id="searchInput">
+                <button class="search-button" onclick="searchFAQ()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="category-tags">
+                <div class="category-tag active" onclick="filterFAQ('all')">All Questions</div>
+                <div class="category-tag" onclick="filterFAQ('general')">General</div>
+                <div class="category-tag" onclick="filterFAQ('technical')">Technical</div>
+                <div class="category-tag" onclick="filterFAQ('security')">Security</div>
+                <div class="category-tag" onclick="filterFAQ('billing')">Billing</div>
+                <div class="category-tag" onclick="filterFAQ('compliance')">Compliance</div>
+            </div>
+        </header>
+        
+        <div class="faq-grid" id="faqContainer">
+            <!-- FAQ items will be dynamically generated -->
+        </div>
+        
+        <div class="contact-section">
+            <h2 style="color: white; margin-bottom: 30px; font-size: 2rem; text-align: center;">
+                <i class="fas fa-headset"></i> Contact Support
+            </h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-title">Email Support</div>
+                    <div class="contact-info">
+                        support@biasmeter.ai<br>
+                        <small>Response within 24 hours</small>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-title">Phone Support</div>
+                    <div class="contact-info">
+                        +91 1800-BIAS-AUDIT<br>
+                        <small>Mon-Fri, 9AM-6PM IST</small>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="contact-title">Live Chat</div>
+                    <div class="contact-info">
+                        Available on Dashboard<br>
+                        <small>Click chat icon to start</small>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="contact-title">Documentation</div>
+                    <div class="contact-info">
+                        docs.biasmeter.ai<br>
+                        <small>Detailed guides & API docs</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2 class="form-title">Still Have Questions?</h2>
+            
+            <form id="supportForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="you@company.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Company</label>
+                    <input type="text" class="form-input" placeholder="Your company name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Question Type</label>
+                    <select class="form-input" required>
+                        <option value="">Select category</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="billing">Billing & Pricing</option>
+                        <option value="compliance">Compliance Questions</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Your Question</label>
+                    <textarea class="form-input" rows="5" placeholder="Describe your issue or question..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="nav-btn prev" onclick="window.location.href='/reports'">
+                <i class="fas fa-arrow-left"></i> Back to Reports
+            </button>
+            <button class="nav-btn home" onclick="window.location.href='/'">
+                <i class="fas fa-home"></i> Back to Dashboard
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const faqData = [
+            {
+                question: "Is my data safe with BiasMeter AI?",
+                answer: "Absolutely! We use end-to-end encryption and never store personally identifiable information. We only analyze fairness patterns, not individual details. Your data is processed in secure AWS data centers with ISO 27001 certification.",
+                category: "security",
+                tags: ["security", "privacy", "data"]
+            },
+            {
+                question: "How often should I run bias checks?",
+                answer: "We recommend:<br><strong>Monthly</strong> audits for general compliance<br><strong>Weekly</strong> for high-risk systems<br><strong>Real-time monitoring</strong> for critical decisions (hiring, loans, healthcare)<br>Continuous monitoring is ideal for any AI making important decisions affecting people.",
+                category: "general",
+                tags: ["best-practices", "monitoring", "compliance"]
+            },
+            {
+                question: "Can BiasMeter fix bias automatically?",
+                answer: "We provide <strong>actionable recommendations</strong> that you can implement with one click. For example:<br>• Auto-adjust algorithm weights<br>• Suggest diverse training data<br>• Pause biased decisions for review<br>We give you the tools, you control the implementation.",
+                category: "technical",
+                tags: ["automation", "features", "technical"]
+            },
+            {
+                question: "What industries do you support?",
+                answer: "We currently support 8 key industries:<br>1. Hiring & Recruitment<br>2. Finance & Banking<br>3. Healthcare<br>4. Education<br>5. Criminal Justice<br>6. E-commerce<br>7. Social Media<br>8. Industrial & Manufacturing<br>More industries coming soon!",
+                category: "general",
+                tags: ["industries", "coverage", "features"]
+            },
+            {
+                question: "How accurate is your bias detection?",
+                answer: "Our industry-specific algorithms achieve <strong>92-95% accuracy</strong> compared to manual audits. We use:<br>• Statistical parity analysis<br>• Disparate impact measurement<br>• Industry-specific fairness metrics<br>• Machine learning pattern recognition",
+                category: "technical",
+                tags: ["accuracy", "technical", "algorithms"]
+            },
+            {
+                question: "What compliance standards do you support?",
+                answer: "We generate reports for:<br>• EEOC Guidelines (USA)<br>• GDPR Article 22 (EU)<br>• CCPA (California)<br>• Upcoming Indian AI regulations<br>• Internal audit requirements<br>Custom compliance templates available.",
+                category: "compliance",
+                tags: ["compliance", "regulations", "legal"]
+            },
+            {
+                question: "How much does BiasMeter cost?",
+                answer: "We offer flexible pricing:<br>• <strong>Basic:</strong> ₹25,000/year (for startups)<br>• <strong>Professional:</strong> ₹1,00,000/year (for SMEs)<br>• <strong>Enterprise:</strong> Custom pricing<br>All plans include API access and basic support.",
+                category: "billing",
+                tags: ["pricing", "billing", "plans"]
+            },
+            {
+                question: "Do you offer on-premise deployment?",
+                answer: "Yes! We offer:<br>• Cloud SaaS (default)<br>• Private cloud deployment<br>• On-premise installation<br>• Hybrid models<br>Contact enterprise sales for deployment options.",
+                category: "technical",
+                tags: ["deployment", "enterprise", "technical"]
+            }
+        ];
+        
+        let filteredFAQ = [...faqData];
+        
+        function renderFAQ() {
+            const container = document.getElementById('faqContainer');
+            container.innerHTML = '';
+            
+            filteredFAQ.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'faq-card';
+                card.dataset.category = item.category;
+                
+                card.innerHTML = `
+                    <div class="faq-header" onclick="toggleFAQ(${index})">
+                        <div class="faq-question">${item.question}</div>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">${item.answer}</div>
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: #95a5a6;">
+                        <i class="fas fa-tag"></i> ${item.tags.join(', ')}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        function toggleFAQ(index) {
+            const cards = document.querySelectorAll('.faq-card');
+            const card = cards[index];
+            
+            if (card.classList.contains('active')) {
+                card.classList.remove('active');
+            } else {
+                // Close all other cards
+                cards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            }
+        }
+        
+        function filterFAQ(category) {
+            const tags = document.querySelectorAll('.category-tag');
+            tags.forEach(tag => tag.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (category === 'all') {
+                filteredFAQ = [...faqData];
+            } else {
+                filteredFAQ = faqData.filter(item => item.category === category);
+            }
+            
+            renderFAQ();
+        }
+        
+        function searchFAQ() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (!searchTerm) {
+                filteredFAQ = [...faqData];
+                renderFAQ();
+                return;
+            }
+            
+            filteredFAQ = faqData.filter(item => 
+                item.question.toLowerCase().includes(searchTerm) ||
+                item.answer.toLowerCase().includes(searchTerm) ||
+                item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+            
+            renderFAQ();
+            
+            if (filteredFAQ.length === 0) {
+                const container = document.getElementById('faqContainer');
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: #95a5a6; margin-bottom: 20px;"></i>
+                        <h3 style="color: #2c3e50; margin-bottom: 10px;">No results found</h3>
+                        <p style="color: #7f8c8d;">Try different keywords or browse categories</p>
+                    </div>
+                `;
+            }
+        }
+        
+        document.getElementById('searchInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                searchFAQ();
+            }
+        });
+        
+        document.getElementById('supportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            showNotification('📨 Your message has been sent! We\'ll respond within 24 hours.', 'success');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                background: ${type === 'success' ? '#2ecc71' : '#e74c3c'};
+                color: white;
+                border-radius: 10px;
+                z-index: 1000;
+                font-weight: 500;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Initial render
+        renderFAQ();
+    </script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Compliance Center | BiasMeter AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #2c3e50, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .regulation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .regulation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #2ecc71;
+        }
+        
+        .regulation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+        }
+        
+        .regulation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .regulation-icon {
+            font-size: 2.5rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
+        .regulation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .regulation-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .regulation-region {
+            background: #e8f6f3;
+            color: #27ae60;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .regulation-content {
+            color: #5d6d7e;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .penalty-box {
+            background: #fdebd0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .penalty-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d35400;
+        }
+        
+        .compliance-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            background: #e8f6f3;
+            transform: translateX(5px);
+        }
+        
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #3498db;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-checkbox.checked {
+            background: #2ecc71;
+            border-color: #2ecc71;
+            color: white;
+        }
+        
+        .checklist-text {
+            flex: 1;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .deadline-indicator {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .action-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .action-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.prev {
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .nav-btn.next {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .regulation-grid, .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <div>
+                    <h1>AI Compliance Center</h1>
+                    <p class="subtitle">Navigate Global AI Regulations with Confidence</p>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">4%</div>
+                    <div class="stat-label">Maximum GDPR Penalty</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">80%</div>
+                    <div class="stat-label">EEOC 80% Rule</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Countries with AI Laws</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">₹500Cr</div>
+                    <div class="stat-label">Potential Indian Fines</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="regulation-grid">
+            <div class="regulation-card">
+                <div class="regulation-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="regulation-header">
+                    <div class="regulation-title">GDPR Article 22</div>
+                    <div class="regulation-region">EUROPE</div>
+                </div>
+                <div class="regulation-content">
+                    <p><strong>Right to Explanation:</strong> Individuals have the right not to be subject to automated decision-making without human intervention.</p>
+                    <p><strong>Requirements:</strong> Must provide meaningful information about the logic involved in automated decisions.</p>
+                </div>
+                <div class="penalty-box">
+                    <div class="penalty-amount">Up to 4% of Global Revenue</div>
+                    <div style="font-size: 0.9rem; color: #d35400;">or €20 Million, whichever is higher</div>
+                </div>
+            </div>
+            
+            <div class="regulation-card">
+                <div class="regulation-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="regulation-header">
+                    <div class="regulation-title">EEOC Guidelines</div>
+                    <div class="regulation-region">USA</div>
+                </div>
+                <div class="regulation-content">
+                    <p><strong>80% Rule (4/5ths Rule):</strong> Selection rate for any protected group should not be less than 80% of the rate for the group with the highest rate.</p>
+                    <p><strong>Example:</strong> If men are hired at 80% rate, women should be hired at no less than 64% rate.</p>
+                </div>
+                <div class="penalty-box">
+                    <div class="penalty-amount">$300,000+ per violation</div>
+                    <div style="font-size: 0.9rem; color: #d35400;">Plus class action lawsuits</div>
+                </div>
+            </div>
+            
+            <div class="regulation-card">
+                <div class="regulation-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <div class="regulation-header">
+                    <div class="regulation-title">Indian AI Policy</div>
+                    <div class="regulation-region">INDIA</div>
+                </div>
+                <div class="regulation-content">
+                    <p><strong>National Strategy for AI:</strong> Emphasis on ethical AI development and deployment.</p>
+                    <p><strong>Upcoming Regulations:</strong> Digital India Act expected to include AI governance provisions with penalties similar to GDPR.</p>
+                </div>
+                <div class="penalty-box">
+                    <div class="penalty-amount">Coming Soon</div>
+                    <div style="font-size: 0.9rem; color: #d35400;">Expected 2025 implementation</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="compliance-section">
+            <h2 style="color: #2c3e50; margin-bottom: 25px; font-size: 1.8rem;">
+                <i class="fas fa-clipboard-check"></i> Your Compliance Checklist
+            </h2>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="complianceProgress"></div>
+            </div>
+            <div style="text-align: center; color: #7f8c8d; margin-bottom: 25px;">
+                Compliance Progress: <span id="progressText">0%</span>
+            </div>
+            
+            <div class="checklist-grid">
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <div class="checklist-checkbox">
+                        <i class="fas fa-check" style="display: none;"></i>
+                    </div>
+                    <div class="checklist-text">
+                        Monthly bias audits completed
+                        <span class="deadline-indicator">Due: 30 days</span>
+                    </div>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <div class="checklist-checkbox">
+                        <i class="fas fa-check" style="display: none;"></i>
+                    </div>
+                    <div class="checklist-text">
+                        Documentation for all AI decisions
+                        <span class="deadline-indicator">Continuous</span>
+                    </div>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <div class="checklist-checkbox">
+                        <i class="fas fa-check" style="display: none;"></i>
+                    </div>
+                    <div class="checklist-text">
+                        Human oversight process established
+                        <span class="deadline-indicator">Immediate</span>
+                    </div>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <div class="checklist-checkbox">
+                        <i class="fas fa-check" style="display: none;"></i>
+                    </div>
+                    <div class="checklist-text">
+                        Bias remediation plan in place
+                        <span class="deadline-indicator">60 days</span>
+                    </div>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <div class="checklist-checkbox">
+                        <i class="fas fa-check" style="display: none;"></i>
+                    </div>
+                    <div class="checklist-text">
+                        Employee training on AI ethics
+                        <span class="deadline-indicator">90 days</span>
+                    </div>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <div class="checklist-checkbox">
+                        <i class="fas fa-check" style="display: none;"></i>
+                    </div>
+                    <div class="checklist-text">
+                        Annual compliance report prepared
+                        <span class="deadline-indicator">Annual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-section">
+            <h2 class="action-title">Ready for Compliance Peace of Mind?</h2>
+            <p style="opacity: 0.9; margin-bottom: 20px; font-size: 1.1rem;">
+                Let BiasMeter AI handle your compliance documentation automatically. 
+                Generate audit-ready reports in minutes, not weeks.
+            </p>
+            
+            <button class="action-button" onclick="generateComplianceReport()">
+                <i class="fas fa-file-pdf"></i> Generate Compliance Report
+            </button>
+            
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold;">5 min</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Report Generation</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold;">100%</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Audit Ready</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold;">₹50L</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Potential Savings</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="nav-btn prev" onclick="window.location.href='/learn'">
+                <i class="fas fa-arrow-left"></i> Back to Learning
+            </button>
+            <button class="nav-btn next" onclick="window.location.href='/developers'">
+                Next: Developer Hub <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let checkedItems = 0;
+        const totalItems = 6;
+        
+        function toggleChecklist(element) {
+            const checkbox = element.querySelector('.checklist-checkbox');
+            const icon = checkbox.querySelector('i');
+            
+            if (checkbox.classList.contains('checked')) {
+                checkbox.classList.remove('checked');
+                icon.style.display = 'none';
+                checkedItems--;
+            } else {
+                checkbox.classList.add('checked');
+                icon.style.display = 'block';
+                checkedItems++;
+            }
+            
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const progress = (checkedItems / totalItems) * 100;
+            const progressBar = document.getElementById('complianceProgress');
+            const progressText = document.getElementById('progressText');
+            
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${Math.round(progress)}%`;
+            
+            if (progress === 100) {
+                showNotification('🎉 Perfect! All compliance items completed!', 'success');
+            }
+        }
+        
+        function generateComplianceReport() {
+            showNotification('📄 Generating your compliance report...', 'info');
+            
+            // Simulate report generation
+            setTimeout(() => {
+                showNotification('✅ Compliance report generated! Download will start automatically.', 'success');
+                
+                // Create and trigger download
+                const blob = new Blob(['Sample Compliance Report'], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `compliance-report-${new Date().toISOString().slice(0,10)}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 2000);
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                background: ${type === 'success' ? '#2ecc71' : type === 'info' ? '#3498db' : '#e74c3c'};
+                color: white;
+                border-radius: 10px;
+                z-index: 1000;
+                font-weight: 500;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

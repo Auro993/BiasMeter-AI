@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Reports | BiasMeter AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #2c3e50, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .year-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .year-btn {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .year-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .year-btn:hover:not(.active) {
+            background: #e3f2fd;
+            border-color: #3498db;
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .summary-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .summary-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .summary-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .report-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .report-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+        
+        .report-card.tech::before {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+        
+        .report-card.finance::before {
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+        }
+        
+        .report-card.health::before {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+        }
+        
+        .report-card.education::before {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+        }
+        
+        .report-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .report-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .report-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .report-icon.tech {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .report-icon.finance {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .report-icon.health {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .report-icon.education {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        .report-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .score-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .score-excellent {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .score-good {
+            background: linear-gradient(135deg, #f39c12, #d35400);
+        }
+        
+        .score-poor {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .report-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .trend-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .trend-up {
+            color: #e74c3c;
+        }
+        
+        .trend-down {
+            color: #2ecc71;
+        }
+        
+        .recommendation {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .comparison-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .compare-form {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: end;
+            margin-top: 25px;
+        }
+        
+        .compare-input {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .compare-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .compare-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .compare-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .result-box {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+            display: none;
+        }
+        
+        .result-value {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .result-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .download-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .download-btn.pdf {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        
+        .download-btn.excel {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+        
+        .download-btn.csv {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.prev {
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .nav-btn.next {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .reports-grid, .compare-form {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .compare-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div>
+                    <h1>Industry Bias Report 2026</h1>
+                    <p class="subtitle">Insights from 50,000+ AI Decisions Across Industries</p>
+                </div>
+            </div>
+            
+            <div class="year-selector">
+                <button class="year-btn" onclick="changeYear(2023)">2023</button>
+                <button class="year-btn" onclick="changeYear(2024)">2024</button>
+                <button class="year-btn active" onclick="changeYear(2025)">2025</button>
+                <button class="year-btn" onclick="changeYear(2026)">2026</button>
+            </div>
+        </header>
+        
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-value">50K+</div>
+                <div class="summary-label">Decisions Analyzed</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value">68%</div>
+                <div class="summary-label">Avg Fairness Score</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value">₹500Cr</div>
+                <div class="summary-label">Potential Bias Costs</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value">85%</div>
+                <div class="summary-label">Companies Need Improvement</div>
+            </div>
+        </div>
+        
+        <div class="reports-grid">
+            <div class="report-card tech">
+                <div class="report-header">
+                    <div class="report-icon tech">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="report-title">Tech Hiring</div>
+                    <div class="score-badge score-poor">58/100</div>
+                </div>
+                
+                <div style="color: #5d6d7e; margin-bottom: 15px;">
+                    Analysis of 10,000 hiring decisions from 50 tech companies.
+                </div>
+                
+                <div class="report-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">68%</div>
+                        <div class="stat-label">Male Selection</div>
+                        <div class="trend-indicator trend-up">
+                            <i class="fas fa-arrow-up"></i> 5% from 2024
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">42%</div>
+                        <div class="stat-label">Female Selection</div>
+                        <div class="trend-indicator trend-down">
+                            <i class="fas fa-arrow-down"></i> 3% from 2024
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">₹25L</div>
+                        <div class="stat-label">Avg Experience Gap</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">45%</div>
+                        <div class="stat-label">Blind Hiring Impact</div>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <strong>Key Recommendation:</strong> Implement blind technical interviews and standardized coding assessments to reduce gender bias by 45%.
+                </div>
+            </div>
+            
+            <div class="report-card finance">
+                <div class="report-header">
+                    <div class="report-icon finance">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="report-title">Banking & Loans</div>
+                    <div class="score-badge score-good">72/100</div>
+                </div>
+                
+                <div style="color: #5d6d7e; margin-bottom: 15px;">
+                    25,000 loan applications analyzed across major banks.
+                </div>
+                
+                <div class="report-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">2.3x</div>
+                        <div class="stat-label">ZIP Code Impact</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">18%</div>
+                        <div class="stat-label">Approval Gap</div>
+                        <div class="trend-indicator trend-down">
+                            <i class="fas fa-arrow-down"></i> 7% from 2024
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">₹5.2L</div>
+                        <div class="stat-label">Avg Interest Difference</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">65%</div>
+                        <div class="stat-label">Algorithm Transparency</div>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <strong>Key Recommendation:</strong> Remove address/ZIP code from loan algorithms and implement alternative credit scoring models.
+                </div>
+            </div>
+            
+            <div class="report-card health">
+                <div class="report-header">
+                    <div class="report-icon health">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="report-title">Healthcare AI</div>
+                    <div class="score-badge score-poor">61/100</div>
+                </div>
+                
+                <div style="color: #5d6d7e; margin-bottom: 15px;">
+                    Medical diagnosis and treatment recommendations analysis.
+                </div>
+                
+                <div class="report-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">34%</div>
+                        <div class="stat-label">Treatment Delay</div>
+                        <div class="trend-indicator trend-up">
+                            <i class="fas fa-arrow-up"></i> 8% from 2024
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2.1x</div>
+                        <div class="stat-label">Pain Assessment</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">45%</div>
+                        <div class="stat-label">Follow-up Rate Gap</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">₹3.8L</div>
+                        <div class="stat-label">Avg Cost Difference</div>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <strong>Key Recommendation:</strong> Standardize symptom assessment protocols and implement demographic-aware AI training.
+                </div>
+            </div>
+            
+            <div class="report-card education">
+                <div class="report-header">
+                    <div class="report-icon education">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="report-title">Education Admissions</div>
+                    <div class="score-badge score-good">76/100</div>
+                </div>
+                
+                <div style="color: #5d6d7e; margin-bottom: 15px;">
+                    University and college admission algorithm analysis.
+                </div>
+                
+                <div class="report-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">15%</div>
+                        <div class="stat-label">Test Score Weight</div>
+                        <div class="trend-indicator trend-down">
+                            <i class="fas fa-arrow-down"></i> 5% from 2024
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2.5x</div>
+                        <div class="stat-label">Extracurricular Impact</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">28%</div>
+                        <div class="stat-label">Socioeconomic Factor</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">82%</div>
+                        <div class="stat-label">Anonymization Success</div>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <strong>Key Recommendation:</strong> Implement anonymous application review and standardized evaluation rubrics.
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <h2 style="color: #2c3e50; margin-bottom: 25px; font-size: 1.8rem;">
+                <i class="fas fa-balance-scale"></i> Compare Your Company
+            </h2>
+            
+            <div class="compare-form">
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Your Bias Score</label>
+                    <input type="number" class="compare-input" placeholder="Enter your score (0-100)" id="yourScore" min="0" max="100" step="0.1">
+                </div>
+                <div style="text-align: center; padding: 0 10px;">
+                    <div style="font-size: 2rem;">vs</div>
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Industry</label>
+                    <select class="compare-input" id="industrySelect">
+                        <option value="tech">Tech Hiring (58)</option>
+                        <option value="finance">Banking & Loans (72)</option>
+                        <option value="health">Healthcare (61)</option>
+                        <option value="education">Education (76)</option>
+                        <option value="all">All Industries (68)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="compare-btn" onclick="compareScores()" style="margin-top: 20px;">
+                <i class="fas fa-chart-line"></i> Compare Now
+            </button>
+            
+            <div class="result-box" id="resultBox">
+                <div class="result-value" id="resultValue">15% Better</div>
+                <div class="result-text" id="resultText">
+                    Your AI system performs better than industry average!
+                </div>
+            </div>
+        </div>
+        
+        <div class="download-section">
+            <h2 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.8rem;">
+                <i class="fas fa-download"></i> Download Full Report
+            </h2>
+            <p style="color: #7f8c8d; margin-bottom: 20px;">
+                Get the complete 2026 Industry Bias Report with detailed analysis and recommendations.
+            </p>
+            
+            <div class="download-buttons">
+                <button class="download-btn pdf" onclick="downloadReport('pdf')">
+                    <i class="fas fa-file-pdf"></i> PDF Report (50 pages)
+                </button>
+                <button class="download-btn excel" onclick="downloadReport('excel')">
+                    <i class="fas fa-file-excel"></i> Excel Data
+                </button>
+                <button class="download-btn csv" onclick="downloadReport('csv')">
+                    <i class="fas fa-file-csv"></i> CSV Dataset
+                </button>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="nav-btn prev" onclick="window.location.href='/developers'">
+                <i class="fas fa-arrow-left"></i> Back to Developers
+            </button>
+            <button class="nav-btn next" onclick="window.location.href='/faq'">
+                Next: FAQ & Support <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function changeYear(year) {
+            const buttons = document.querySelectorAll('.year-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            showNotification(`Switched to ${year} industry data`, 'info');
+        }
+        
+        function compareScores() {
+            const yourScore = parseFloat(document.getElementById('yourScore').value);
+            const industrySelect = document.getElementById('industrySelect');
+            const industry = industrySelect.value;
+            
+            if (isNaN(yourScore) || yourScore < 0 || yourScore > 100) {
+                showNotification('Please enter a valid score between 0 and 100', 'error');
+                return;
+            }
+            
+            // Industry average scores
+            const industryAverages = {
+                'tech': 58,
+                'finance': 72,
+                'health': 61,
+                'education': 76,
+                'all': 68
+            };
+            
+            const industryAvg = industryAverages[industry];
+            const difference = yourScore - industryAvg;
+            const percentDifference = Math.round((difference / industryAvg) * 100);
+            
+            const resultBox = document.getElementById('resultBox');
+            const resultValue = document.getElementById('resultValue');
+            const resultText = document.getElementById('resultText');
+            
+            if (difference > 0) {
+                resultValue.textContent = `${Math.abs(percentDifference)}% Better`;
+                resultValue.style.color = '#2ecc71';
+                resultText.textContent = `Your AI system performs ${Math.abs(percentDifference)}% better than ${industry} industry average! Great job!`;
+            } else if (difference < 0) {
+                resultValue.textContent = `${Math.abs(percentDifference)}% Below`;
+                resultValue.style.color = '#e74c3c';
+                resultText.textContent = `Your AI system needs improvement. You're ${Math.abs(percentDifference)}% below ${industry} industry average.`;
+            } else {
+                resultValue.textContent = "On Par";
+                resultValue.style.color = '#f39c12';
+                resultText.textContent = `Your AI system performs exactly at ${industry} industry average.`;
+            }
+            
+            resultBox.style.display = 'block';
+            showNotification('Comparison completed!', 'success');
+        }
+        
+        function downloadReport(format) {
+            showNotification(`Downloading ${format.toUpperCase()} report...`, 'info');
+            
+            setTimeout(() => {
+                showNotification(`✅ Report downloaded successfully!`, 'success');
+                
+                // Simulate download
+                const blob = new Blob([`Sample ${format} report`], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `industry-bias-report-2026.${format}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 1500);
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                background: ${type === 'success' ? '#2ecc71' : type === 'info' ? '#3498db' : '#e74c3c'};
+                color: white;
+                border-radius: 10px;
+                z-index: 1000;
+                font-weight: 500;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
