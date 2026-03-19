@@ -1,4 +1,4 @@
-package com.example.biasmeter.service;
+package com.example.biasmeter.service; 
 
 import com.example.biasmeter.model.BiasResult;
 import org.springframework.stereotype.Service;
