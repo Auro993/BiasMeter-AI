@@ -1,4 +1,4 @@
-package com.example.biasmeter.controller; 
+package com.example.biasmeter.controller;   
 
 import com.example.biasmeter.model.BiasResult;
 import com.example.biasmeter.service.BiasService;
