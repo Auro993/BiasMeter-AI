@@ -1,4 +1,4 @@
-package com.example.biasmeter.controller;
+package com.example.biasmeter.controller; 
  
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
