@@ -1,4 +1,4 @@
-package com.example.biasmeter.controller;
+package com.example.biasmeter.controller; 
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
